@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <h1 style="text-align:center; margin-top:20%;">
+      Let's play Rock Paper Scissors!<br />Refresh to play again!
+    </h1>
+    <script type="text/javascript">
+     
+      // TODO: Create an array of the three game choices (Rock, Paper, or Scissors).
+      var gameChoices = ['Rock', 'Paper', 'Scissors'];
+
+      // TODO: Create variables to hold the number of wins, losses, and ties. They start at 0.
+      var wins = 0;
+      var losses = 0;
+      var ties = 0;
+
+      for (var i = 0; i < 3; i++) {
+        // TODO: Randomly choose a choice from the gameChoices array. This is the computer's turn.
+        var computerTurn =  Math.floor(Math.random() * 3);
+
+        // TODO: Collect the user's response and convert to lower case. This is the user's turn.
+        var playerTurn = 0;
+        while (playerTurn < 1 || playerTurn > 3 || !playerTurn) {
+          playerTurn = parseInt (prompt ("Enter 1 for Rock, 2 for Paper, and 3 for Scissors"));
+          console.log(playerTurn);
+          if (playerTurn < 1 || playerTurn > 3 || !playerTurn) {
+            alert ("That's not a valid selection! Try again")
+          }
+        }
+
+        playerTurn--;
+
+        var message = "Computer : " + gameChoices[computerTurn] + " | You : " + gameChoices[playerTurn] + '\n';
+        // TODO: Create the game logic to run if the user chooses a valid game choice
+        if (gameChoices[computerTurn]=== 'Rock') {
+          if (gameChoices[playerTurn] === 'Rock') {
+            message += "It's a tie";
+            ties++;
+          } else if (gameChoices[playerTurn] == 'Paper') {
+            message += "You win!";
+            wins++;
+          } else {
+            message += "You lose!";
+            losses++;
+          }
+        } else if (gameChoices[computerTurn] === 'Paper') {
+          if (gameChoices[playerTurn] === 'Paper') {
+            message += "It's a tie";
+            ties++;
+          } else if (gameChoices[playerTurn] === 'Scissors') {
+            message += "You win!";
+            wins++;
+          } else {
+            message += "You lose!";
+            losses++;
+          }
+        } else {
+          if (gameChoices[playerTurn] === 'Scissors') {
+            message += "It's a tie";
+            ties++;
+          } else if (gameChoices[playerTurn] === 'Rock') {
+            message += "You win!";
+            wins++;
+          } else {
+            message += "You lose!";
+            losses++;
+          }
+        }
+
+        // alert (message + "\n\n Wins: " + wins + " Losses: " + losses + " Ties: " + ties );
+        console.log (message + "\n\n Wins: " + wins + " Losses: " + losses + " Ties: " + ties )
+
+      }
+
+      // TODO: When the game is over, alert the final total to the user. We can use the \n character to make a line break.
+      alert("GAME OVER\n\nWins: " + wins + " Losses: " + losses + " Ties: " + ties);
+    </script>
+  </body>
+</html>
